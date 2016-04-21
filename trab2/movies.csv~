@@ -1,4 +1,5 @@
-Return","2007","52","8726","150","0.24","46.3","82.2","3153","27.5","1.3084","0.71","196"
+"Nbr_of_Oscars","Oscar","Nbr_of_Baftas","Bafta","Multiple_Oscars","Oscar_Winner","Film","Foreign_Gross","Genre","Lead_Studio","Story","Year","Audience_score","Box_Office_Average_per_US_Cinema_Opening_Weekend","Budget_M","Margin","Profit_M","Domestic_Gross_M","Number_of_Theatres_in_US_Opening_Weekend","Opening_Weekend_M","Profitability","Rotten_Tomatoes","Worldwide_Gross_M"
+"0","","0","","No","No","Beowulf","114.07","Action","Paramount","Journey and Return","2007","52","8726","150","0.24","46.3","82.2","3153","27.5","1.3084","0.71","196"
 "0","","0","","No","No","Spider-Man 3","554.34","Action","Sony","Metamorphosis","2007","54","35540","258","0.71","632.9","336.5","4252","151.1","3.453","0.61","891"
 "0","","0","","No","No","TMNT","40.86","Action","","Monster Force","2007","63","7799","35","0.63","60","54.2","3110","24.3","2.7146","0.33","95"
 "0","","0","","No","No","Fantastic Four: Rise of the Silver Surfer","157.13","Action","Fox","Monster Force","2007","55","14663","130","0.55","159.1","131.9","3959","58","2.2234","0.35","289"
@@ -517,8 +518,7 @@ Return","2007","52","8726","150","0.24","46.3","82.2","3153","27.5","1.3084","0.
 "0","","0","","No","No","Cowboys and Aliens","74.58","Action","Universal","Monster Force","2011","50","9715","163","0.07","11.8","100.2","3750","36.4","1.072521472","0.44","175"
 "0","","0","","No","No","Mission Impossible 4","480.4","Action","Paramount","Pursuit","2011","86","8672","145","0.79","543.8","208.4","3448","29.6","4.750206897","0.93","689"
 "0","","0","","No","No","Sherlock Holmes 2","335.6","Action","Warner Bros","Pursuit","2011","79","10704","125","0.76","397","186.4","3703","39.6","4.17568","0.6","522"
-"0","","0","","No","No","""Pirates of the Caribbean:
-On Stranger Tides""","802.8","Action","Disney","Quest","2011","61","21697","250","0.76","793.9","241.1","4155","90.2","4.175484","0.34","1044"
+"0","","0","","No","No","""Pirates of the Caribbean:On Stranger Tides""","802.8","Action","Disney","Quest","2011","61","21697","250","0.76","793.9","241.1","4155","90.2","4.175484","0.34","1044"
 "0","","0","","No","No","Transformers: Dark of the Moon","770.81","Action","DreamWorks Pictures","Quest","2011","67","23937","195","0.83","928.2","352.4","4088","97.9","5.759974359","0.35","1123"
 "0","","0","","No","No","Sucker Punch","53.4","Action","Legendary Pictures","Quest","2011","48","6284","82","0.09","7.8","36.4","3033","19.1","1.09502439","0.23","90"
 "0","","0","","No","No","Conan the Barbarian","27.5","Action","Lionsgate","Quest","2011","34","3324","90","-0.84","-41.2","21.3","3015","10","0.542166667","0.22","49"
