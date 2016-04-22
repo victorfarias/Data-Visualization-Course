@@ -11,38 +11,103 @@
 
 <body>
 <div id="container" style="width:100%; height:400px;"></div>
+<div id="container1" style="width:100%; height:800px;"></div>
+
 
 <script>
-    var results = Papa.parse(movies.csv);
-    console.log(results.meta.delimiter);
-    $(function () {
-        $("#container").highcharts({
-            chart : {
-                type : 'column'
+
+
+    $.get('https://raw.githubusercontent.com/victorfarias/victorfarias.github.io/master/trab2/movies1.csv', function(csv) {
+        lines = csv.split('\n');
+        data_csv = lines.map(function (l){
+            s = l.split(",");
+            return s.map(Number);
+        });
+        $('#container').highcharts({
+            chart: {
+                type: 'scatter'
             },
-            title : {
-                text : 'Lanchonete do Diniz'
+            title: {
+                text: 'Correlação entre budget e domestic gross'
             },
-            xAxis:{
-                categories : ["Tapioca",'Cafe','Suco', 'Ks']
-            },
-            yAxis:{
+            yAxis: {
                 title: {
-                    text: 'Itens'
+                    text: 'Budget'
                 }
             },
-            series : [{
-                name:'Gil',
-                data: [0,0,3,4]
+            xAxis: {
+                title: {
+                    text: 'Domestic Gross'
+                }
             },
-                {
-                    name:'Sá',
-                    data: [4,4,2,2]
-                },
-                {
-                    name:'Zé',
-                    data: [5,7,0,2]
-                }]
+            series: [{
+                data: data_csv
+            }]
+        });
+    });
+
+    $.get('https://raw.githubusercontent.com/victorfarias/victorfarias.github.io/master/trab2/movies.csv', function(csv) {
+        lines = csv.split('\n');
+        domestic_gross = {};
+        foreign_gross = {};
+        for (l in lines){
+            s = lines[l].split(',');
+            if (s[9] in domestic_gross){
+                if(!(s[7] ==undefined)) {
+                    ns = s[7].substr(1, s[7].length - 2)
+                    foreign_gross[s[9]] += Number(ns);
+                }
+                if(!(s[17] ==undefined)) {
+                    ns = s[17].substr(1, s[17].length - 2)
+                    domestic_gross[s[9]] += Number(ns);
+                }
+            }else{
+                domestic_gross[s[9]] =0;
+                foreign_gross[s[9]] =0;
+            }
+        }
+        l = [];
+        for(p in domestic_gross){
+            l.push([p,domestic_gross[p],foreign_gross[p]]);
+        }
+        l.sort(function(a, b) {
+            return (((a[1]+a[2]) > (b[1]+b[2])) ? -1 : (((a[1]+a[2]) == (b[1]+b[2])) ? 0 : 1));
+        });
+        cat = [];
+        f = [];
+        d = [];
+        for(i in l){
+            cat.push(l[i][0]);
+            f.push(l[i][1]);
+            d.push(l[i][2]);
+        }
+
+        console.log(cat);
+        $('#container1').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Gross por produtora'
+            },
+            xAxis: {
+                categories: cat
+            },
+            legend: {
+                reversed: true
+            },
+            plotOptions: {
+                series: {
+                    stacking: 'normal'
+                }
+            },
+            series: [{
+                name: 'Foreign',
+                data: f
+            }, {
+                name: 'Domestic',
+                data: d
+            }]
         });
     });
 </script>
