@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Exercício D3</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+<div id="chart1">
+    <h1>
+        1. Bilheteria
+    </h1>
+</div>
+
+<div id="chart2">
+    <h1>
+        2. Orçamento
+    </h1>
+</div>
+
+<div id="chart3">
+    <h1>
+        3. Lucro
+    </h1>
+</div>
+
+<script type="text/javascript">
+
+    var compareGenerico = function(atributo){
+        return function(a,b){
+            return a[atributo] > b[atributo]?-1:1;
+        }
+    }
+
+
+    function render(data,divName,atributo,background_color) {
+        d3.select("#"+divName).selectAll("."+divName)
+                .data(data)
+            .enter().append("div")
+            .attr("class", "h-bar "+divName)
+            .append("span");
+        
+        d3.select("#"+divName).selectAll("."+divName)
+                .data(data)
+            .exit().remove();
+        
+        d3.select("#"+divName).selectAll("."+divName)
+                .data(data)
+            .attr("class", "h-bar "+divName)
+            .style("width", function (d) {
+                return (d[atributo] / 1.7) + "px";
+            })
+            .style("background-color", background_color)
+            .select("span")
+                .text(function (d) {
+                    return d.Film;
+                });
+        
+        d3.select("body")
+            .selectAll("."+divName) 
+            .sort(compareGenerico(atributo));
+    }
+    
+    d3.json("movies.json", function(error, json){ 
+        for (e in json){
+            json[e]["lucro"] = json[e]["Worldwide_Gross_M"] - json[e]["Budget_M"];
+        }
+
+        render(json,"chart1","Worldwide_Gross_M","steelblue");
+        render(json,"chart2","Budget_M","Chartreuse");        
+        render(json,"chart3","lucro","LightCoral");        
+    });
+</script>
+</body>
+</html>
