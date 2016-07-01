@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title> Gráfico de Barras </title>
     <!-- Inclusões das bibliotecas JavaScript para o Highcharts -->
@@ -9,37 +9,69 @@
 </head>
 
 <body>
-<div id="container" style="width:100%; height:400px;"></div>
+<div id="barra" style="width:100%; height:400px;"></div>
+</br></br></br>
+<div id="linha" style="width:100%; height:400px;"></div>
 
 <script>
     $(function () {
-        $("#container").highcharts({
+        $("#barra").highcharts({
             chart : {
                 type : 'column'
             },
             title : {
-                text : 'Lanchonete do Diniz'
+                text : 'Movies'
             },
             xAxis:{
-                categories : ["Tapioca",'Cafe','Suco', 'Ks']
+                categories : ["Worlwide Gross",'Domestic Gross','Brazil Gross', 'China Gross']
             },
             yAxis:{
                 title: {
-                    text: 'Itens'
+                    text: '$$'
                 }
             },
             series : [{
-                name:'Gil',
-                data: [0,0,3,4]
+                name:'Avatar',
+                data: [2787965087,760507625,58218829,204129854 ]
             },
-                {
-                    name:'Sá',
-                    data: [4,4,2,2]
-                },
-                {
-                    name:'Zé',
-                    data: [5,7,0,2]
-                }]
+            {
+                name:'Independence Day',
+                data: [817400891,306169268,15397891,0]
+            },
+            {
+                name:'Shrek 2',
+                data: [919838758,441226247,9457271,1498663]
+            },
+            {
+                name:'Spider-Man 3',
+                data: [890871626,336530303,24204031,18924747]
+            },
+            {
+                name:"Marvel's The Avengers",
+                data: [1519557910,623357910,63904807,86300000]
+            }]
+        });
+    });
+    $(function () {
+        $("#linha").highcharts({
+            chart: {     
+                type: 'line' 
+            }, 
+            title: {     
+                text: 'Arrecadação nas Bilheterias na Semana de Estreia'
+            }, 
+            xAxis: {     
+                categories: ['Avatar', 'Independence Day', 'Shrek 2', 'Spider-Man 3',"Marvel's The Avengers"] 
+            }, 
+            yAxis: {     
+                title: {         
+                    text: 'Valor arrecadado (US$) corrigido pela inflação'     
+                } 
+            }, 
+            series: [{ 
+                name:"Arrecadação",    
+                data: [77025481, 97501900, 149269700, 121800400, 219190200] 
+            }]
         });
     });
 </script>
