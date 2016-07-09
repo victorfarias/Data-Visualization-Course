@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>14_web_vis_with_d3_2</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/dc.css"/>
+</head>
+<body>
+
+<div id="container">
+</div>
+
+<div id="container2">
+</div>
+
+
+
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/crossfilter.js"></script>
+<script type="text/javascript" src="js/dc.js"></script>
+<script type="text/javascript">
+
+var chart = dc.barChart("#container");
+var chart2 = dc.barChart("#container2");
+d3.json("movies.json", function(error, data) {
+
+  // data.forEach(function(x) {
+  //   console.log(x.Genre);
+  //   // x.Speed = +x.Speed;
+  // });
+
+  var ndx = crossfilter(data);
+  var yearDimension = ndx.dimension(function(d) {return d.Year;});
+  var budgetGroup = yearDimension.group().reduceSum(function(d) {return d.Budget_M;});
+
+  chart
+    .width(768)
+    .height(480)
+    .x(d3.scale.linear().domain([2007,2012]))
+    .dimension(yearDimension)
+    .group(budgetGroup)
+    .label(function (d) {
+      return d.x;
+    });
+    // .brushOn(false)
+    // .yAxisLabel("This is the Y Axis!")    
+  
+  var genreDimension = ndx.dimension(function(d) {return d.Genre;});
+  var genreGroup = genreDimension.group().reduceSum(function(d) {return d.Budget_M;});
+
+  console.log(data.map(function (d) {return d.Genre; }));
+  chart2
+    .width(768)
+    .height(480)
+    .x(d3.scale.ordinal())
+    .xUnits(dc.units.ordinal)
+    .dimension(genreDimension)
+    .group(genreGroup);
+
+  dc.renderAll();
+});
+
+</script>
+
+</body>
+</html>
