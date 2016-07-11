@@ -20,7 +20,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/dc.css"/>
     <link href="css/one-page-wonder.css" rel="stylesheet">
     <link rel="stylesheet" href="css/leaflet.css" />
@@ -94,15 +94,20 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="#partidos">Partidos</a>
+                    </li>
+                     <li>
+                        <a href="#judicial">Processos</a>
                     </li>
                     <li>
                         <a href="#Discursos">Discursos</a>
                     </li>
                     <li>
                         <a href="#texto-mapa">Mapa</a>
+                    </li>
+                    <li>
+                        <a href="#sankey-discurso">Sankey</a>
                     </li>
                 </ul>
             </div>
@@ -187,7 +192,7 @@
             <h2 class="featurette-heading">Análise textual dos discursos dos deputados </h2>
             <h3>
                <span class="lead">
-               	Quais palavras os deputados mais disseram? Sobre o que falam os deputados de um certo partido? Quais palavras caracterizam os votos "Sim" ou "Não"?
+                Quais palavras os deputados mais disseram? Sobre o que falam os deputados de um certo partido? Quais palavras caracterizam os votos "Sim" ou "Não"?
                 Escolhemos as 30 palavras mais ditas e as codificamos nessa visualização interativa para responder esse tipo de questionamento.
                </span>
             </h3>
@@ -196,7 +201,7 @@
         <div class="featurette" id="Discursos" style="margin: auto;">
 
               <div id="row_words" style="width:600px; height:600;margin-left: 2cm;">
-              	<h4>Palavras Top 30</h4>
+                <h4>Palavras Top 30</h4>
                 <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
                     <a href="javascript:row.filterAll();dc.redrawAll();">reset</a>
                 </div>
@@ -223,11 +228,11 @@
         <hr class="featurette-divider">
 
         <div id="sankey-discurso">
-        		<h2 class="featurette-heading">Diagrama Sankey </h2>
-        		<h3>
-        			 <span class="lead"> Diagramas Sankey servem para representar o fluxo entre nós em uma rede. No contexto do Impeachment, esse diagrama foi usado para visualizar o real sentido de uma palavra usada no discurso. Tendo acesso às palavras imediatamente vizinhas podemos identificar a real intenção do discurso.
-        			 </span>
-        		</h3>
+                <h2 class="featurette-heading">Diagrama Sankey </h2>
+                <h3>
+                     <span class="lead"> Diagramas Sankey servem para representar o fluxo entre nós em uma rede. No contexto do Impeachment, esse diagrama foi usado para visualizar o real sentido de uma palavra usada no discurso. Tendo acesso às palavras imediatamente vizinhas podemos identificar a real intenção do discurso.
+                     </span>
+                </h3>
         </div>
 
         <label for="text1">Palavra: <input type="text" name="text1" id="text1" /></label>
