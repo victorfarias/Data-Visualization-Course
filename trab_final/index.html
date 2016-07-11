@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Trabalho Final - Visualização Científica</title>
+
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/dc.css"/>
+    <link href="css/one-page-wonder.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/leaflet.css" />
+
+    <script src="js/leaflet.js"></script>
+    <!-- <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
+    <script src="https://d3js.org/colorbrewer.v1.min.js"></script>
+    <script type="text/javascript" src="js/d3.js"></script>
+    <script type="text/javascript" src="js/crossfilter.js"></script>
+    <script type="text/javascript" src="js/dc.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="js/highcharts.js"></script>
+
+    <script src="ext/raphael.js" type="text/javascript"></script>
+    <script src="js/sankey.js" type="text/javascript"></script>
+
+     <style>
+        #map {
+            width: 1139px;
+            height: 700px;
+        }
+
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+        .info h4 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+
+        .legend {
+            text-align: left;
+            line-height: 18px;
+            color: #555;
+        }
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+        .dc-chart g.row text {fill: black;}
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Início</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+
+                    <li>
+                        <a href="#services">Services</a>
+                    </li>
+                    <li>
+                        <a href="#Discursos">Discursos</a>
+                    </li>
+                    <li>
+                        <a href="#texto-mapa">Mapa</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Full Width Image Header -->
+    <header class="header-image">
+        <div class="headline">
+            <div class="container">
+                <h1>Impeachment</h1>
+                <h2>Análise dos votos e discursos </h2>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <hr class="featurette-divider">
+
+        <!-- First Featurette -->
+        <div class="featurette">
+        <h2 class="featurette-heading">Votos por partido </h2>
+            <h3>
+               <span class="lead">
+                Com os votos favoráveis de 367 deputados, 137 contrários e 7 abstenções e duas faltas, o Plenário da Câmara dos Deputados aprovou o relatório pró-impeachment e autorizou o Senado Federal a julgar a presidente da República, Dilma Rousseff, por crime de responsabilidade. A seguir apresentamos um gráfico que mostra como ficou dividida a votação por partido, onde é possível analisar a influência partidária nos votos.
+
+               </span>
+            </h3>
+            <div id="partidos">
+                <script type="text/javascript" src="partidos.js"></script>
+            </div>
+
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- Problemas judiciais  -->
+
+        <div class="featurette">
+        <h2 class="featurette-heading">Votos X Processos Jurídicos </h2>
+            <h3>
+               <span class="lead">
+                Dentre os parlamentares que participaram da votação do processo de impeachment muitos deputados possuem algum questionamento jurídico(respondem ou já foram condenados em algum processo ou têm pendências judiciais ).
+                A seguir, temos um gráfico que destaca o posicionamento dos deputados(com ou sem questionamento jurídico ) em relação ao governo(contra ou a favor). Os dados foram levantados pelo Portal EBC na plataforma do Projeto Excelências, da ONG Transparência Brasil.
+
+               </span>
+            </h3>
+            <div id="judicial">
+                <script type="text/javascript" src="judicial.js"></script>
+            </div>
+        </div>
+
+        <!-- Mapa -->
+       <hr class="featurette-divider">
+
+        <div id="texto-mapa">
+            <h2 class="featurette-heading">Análise da votação por estado </h2>
+            <h3>
+               <span class="lead"> Quão heterogênea foi a votação em relação aos estados brasileiros? A visualização abaixo tenta responder a essa pergunta, mostrando de forma clara onde o Impeachment teve apoio e onde não teve. Cores avermelhadas representam um estado onde o Impeachment não teve grande apoio, enquanto que cores azuis e pretas mostram uma tendência de apoio.</span>
+            </h3>
+
+        </div>
+        <div id="map"></div>
+
+        <h4>
+           Cálculo feito pela fórmula: (Sim - Não)
+        </h4>
+
+        <script type="text/javascript" src="cidadesBrasil.js"></script>
+        <script type="text/javascript" src="brasil.js"></script>
+
+        <hr class="featurette-divider">
+
+        <!-- Discursos -->
+
+        <div id="texto-mapa">
+            <h2 class="featurette-heading">Análise textual dos discursos dos deputados </h2>
+            <h3>
+               <span class="lead">
+               	Quais palavras os deputados mais disseram? Sobre o que falam os deputados de um certo partido? Quais palavras caracterizam os votos "Sim" ou "Não"?
+                Escolhemos as 30 palavras mais ditas e as codificamos nessa visualização interativa para responder esse tipo de questionamento.
+               </span>
+            </h3>
+        </div>
+
+        <div class="featurette" id="Discursos" style="margin: auto;">
+
+              <div id="row_words" style="width:600px; height:600;margin-left: 2cm;">
+              	<h4>Palavras Top 30</h4>
+                <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+                    <a href="javascript:row.filterAll();dc.redrawAll();">reset</a>
+                </div>
+              </div>
+
+              <div id="rigth" style="width:400; height:600;">
+                <h4>Partidos</h4>
+                <div id="pie_words" style="width:400px; height:300">
+                  <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+                    <a href="javascript:pie.filterAll();dc.redrawAll();">reset</a>
+                  </div>
+                </div>
+                <div id="bar_words" style="width:400px; height:300px">
+                  <h4>Votos</h4>
+                  <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+                    <a href="javascript:bar.filterAll();dc.redrawAll();">reset</a>
+                  </div>
+                </div>
+              </div>
+              <script type="text/javascript" src="words.js"></script>
+        </div>
+
+        <!-- Analise Sankey -->
+        <hr class="featurette-divider">
+
+        <div id="sankey-discurso">
+        		<h2 class="featurette-heading">Diagrama Sankey </h2>
+        		<h3>
+        			 <span class="lead"> Diagramas Sankey servem para representar o fluxo entre nós em uma rede. No contexto do Impeachment, esse diagrama foi usado para visualizar o real sentido de uma palavra usada no discurso. Tendo acesso às palavras imediatamente vizinhas podemos identificar a real intenção do discurso.
+        			 </span>
+        		</h3>
+        </div>
+
+        <label for="text1">Palavra: <input type="text" name="text1" id="text1" /></label>
+        <button onclick="changeWord()"> Ok!</button>
+        <div id='sankey' style="width:1100px;height:1000px">&nbsp;</div>
+
+        <script type="text/javascript" src="sankey.js"></script>
+
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
